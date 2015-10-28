@@ -1,0 +1,6 @@
+---
+applications:
+- name: travelguideservices
+  memory: 512M
+  host: travelguideservices
+  domain: mybluemix.net
