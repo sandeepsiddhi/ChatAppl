@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <style>
+      .angular-google-map-container {
+          width: 100%;
+          height: 504px;
+      
+      }
+        
+        #graphArea {
+/*        max-width: 500px;*/
+        background-color:rgba(218, 241, 242, 0.96);  
+            border-radius: 10px;
+    
+    }
+        #currentWeather {
+/*        max-width: 500px;*/
+        background-color:rgba(10, 250, 204, 0.42); 
+            border-radius: 10px;
+    
+    }
+ 
+    </style>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
+    <script src="js/app.js"></script>
+
+    <link href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+
+    <script>
+// Ionic Starter App
+
+// angular.module is a global place for creating, registering and retrieving Angular modules
+// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// the 2nd parameter is an array of 'requires'
+// 'starter.services' is found in services.js
+// 'starter.controllers' is found in controllers.js
+//angular.module('app', ['ionic'])
+//
+//.run(function($ionicPlatform) {
+//  $ionicPlatform.ready(function() {
+//    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+//    // for form inputs)
+//    if(window.cordova && window.cordova.plugins.Keyboard) {
+//      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+//    }
+//    if(window.StatusBar) {
+//      // org.apache.cordova.statusbar required
+//      StatusBar.styleDefault();
+//    }
+//  });
+//})
+//
+//.config(function($stateProvider, $urlRouterProvider) {
+//
+//  // Ionic uses AngularUI Router which uses the concept of states
+//  // Learn more here: https://github.com/angular-ui/ui-router
+//  // Set up the various states which the app can be in.
+//  // Each state's controller can be found in controllers.js
+//  $stateProvider
+//    
+//    .state('page1', {
+//      url: '',
+//      templateUrl: 'page1.html'
+//    })
+//    ;
+//
+//  // if none of the above states are matched, use this as the fallback
+//  
+//  $urlRouterProvider.otherwise('');
+//  
+//});
+//
+//angular.module('app', [])
+// .controller('googlemapoutput', function ($scope,$http) {
+//  
+//    $scope.getWeather = function() {       
+//     var location = document.getElementById("searchLocation").value;
+//        $http.get('http://api.openweathermap.org/data/2.5/forecast/daily?                               q='+location+'&mode=json&units=metric&cnt=7&appid=6592931011456bf7e824174e29720be8')
+//.success(function(sourcedata){
+//            graphArea.innerHTML=" ";
+//            currentWeather.innerHTML= "<center>"+sourcedata.city.name+
+//                                           "<br><br>"+sourcedata.list[0].temp.min+"<sup>o</sup> C<br>"
+//                                            +sourcedata.list[0].weather[0].main+"</center>";
+//            var cityName = sourcedata.city.name;
+//            var longitude = sourcedata.city.coord.lon;
+//            var latitude = sourcedata.city.coord.lat;
+//            var myArray = [];
+//            for(var i=0;i<sourcedata.list.length;i++)
+//                {
+//                    myArray.push({           
+//                    dt: timeConverter(sourcedata.list[i].dt),
+//                    min:sourcedata.list[i].temp.min,
+//                    max:sourcedata.list[i].temp.max,
+//                   //humidity:sourcedata.list[i].humidity
+//                    Main:sourcedata.list[i].weather[0].main
+//                    });
+////                 alert(myArray[i]);
+//                 }
+//    graph(myArray);   
+//
+//function timeConverter(UNIX_timestamp){
+//    var date = new Date(UNIX_timestamp*1000);
+//    var years = date.getFullYear();
+//    var month = date.getMonth() +1;
+//    var mydate = date.getDate();
+//    var formattedTime = years + '-' + month + '-' + mydate;        
+//    return ''+formattedTime+'';   
+//}
+//     
+//function graph(myArray){
+//     Morris.Line({
+//        element:'graphArea',
+//        data: myArray,
+//        xkey:"dt",
+//        ykeys:['min', 'max'],
+//        lineColors:['blue','red'],
+//        lineWidth:1,
+//        pointSize:2,
+//        grid:false,
+//   //   pointFillColors:['white'],
+//        labels: ['Minimum', 'Maximum']
+//     });    
+//}
+//console.log(sourcedata);
+//})       
+//.error(function(error){
+//       
+//})
+//};    
+//google.maps.event.addDomListener(window, 'load', $scope.initialize);
+//});
+
+</script>
+</head>
+<body ng-app="app" animation="slide-left-right-ios7" ng-controller="googlemapoutput">
+
+<!--<script id="page1.html" type="text/ng-template">-->
+<ion-view title="Weather">
+    <ion-content padding="true" class="has-header has-footer">
+        <form>
+            <center><h1>Travel Guide</h1></center>
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="" id="searchLocation">
+            </label>
+            <button class="button button-stable button-block " ng-click="getWeather()">Check Weather</button>
+        </form>
+        <div id="currentWeather"><center>Current Weather</center></div> 
+<!--        <br>-->
+        <div id="graphArea" ></div>
+    </ion-content>
+</ion-view>
+<!--</script>-->
+  </body>
+</html>
